@@ -3,9 +3,9 @@ import { styles } from "./foodContainer.styles";
 import { FoodContainerType } from "@/src/types";
 import { formatWeight } from "@/src/utils";
 
-export function FoodContainer({ id, name, weightInGrams, base64Picture }: FoodContainerType) {
+export function FoodContainer({ name, weightInGrams, base64Picture }: FoodContainerType) {
   return (
-    <View key={id} style={styles.foodContainer}>
+    <View style={styles.foodContainer}>
       <View style={styles.infos}>
         <Text style={styles.name}>{name}</Text>
         <Text style={styles.weight}>{formatWeight(weightInGrams)}</Text>

@@ -10,8 +10,8 @@ interface Props {
 export function FoodContainers({ foodContainers }: Props) {
   return (
     <View style={styles.foodContainers}>
-      {foodContainers.map((foodContainerProps) => {
-        return <FoodContainer {...foodContainerProps} />;
+      {foodContainers.map(({ ...foodContainerProps }) => {
+        return <FoodContainer key={foodContainerProps.id} {...foodContainerProps} />;
       })}
     </View>
   );
