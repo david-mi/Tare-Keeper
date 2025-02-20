@@ -1,16 +1,24 @@
-import { Text, View, Image } from "react-native";
+import { Text, View, Image, Pressable } from "react-native";
 import { styles } from "./foodContainer.styles";
 import { FoodContainerType } from "@/src/types";
 import { formatWeight } from "@/src/utils";
 
-export function FoodContainer({ name, weightInGrams, base64Picture }: FoodContainerType) {
+type Props = FoodContainerType & {
+  onPress: (foodContainer: FoodContainerType) => void;
+};
+
+export function FoodContainer({ onPress, ...foodContainer }: Props) {
+  function handlePress() {
+    onPress(foodContainer);
+  }
+
   return (
-    <View style={styles.foodContainer}>
+    <Pressable style={styles.foodContainer} onPress={handlePress}>
       <View style={styles.infos}>
-        <Text style={styles.name}>{name}</Text>
-        <Text style={styles.weight}>{formatWeight(weightInGrams)}</Text>
+        <Text style={styles.name}>{foodContainer.name}</Text>
+        <Text style={styles.weight}>{formatWeight(foodContainer.weightInGrams)}</Text>
       </View>
-      <Image source={{ uri: base64Picture, width: 80, height: 80 }} />
-    </View>
+      <Image source={{ uri: foodContainer.base64Picture, width: 80, height: 80 }} />
+    </Pressable>
   );
 }
