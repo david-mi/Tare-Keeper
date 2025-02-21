@@ -63,5 +63,9 @@ export const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: 600,
     backgroundColor: "rgb(114, 255, 161)",
+  },
+  closeButton: {
+    marginTop: "auto",
+    alignSelf: "stretch"
   }
 });

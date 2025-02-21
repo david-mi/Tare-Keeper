@@ -4,6 +4,7 @@ export const styles = StyleSheet.create({
   container: {
     gap: 20,
     padding: 20,
+    flexGrow: 1
   },
   title: {
     fontSize: 30,
@@ -30,4 +31,10 @@ export const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: "600"
   },
+  addFoodContainerButton: {
+    marginTop: "auto",
+    backgroundColor: "rgb(0, 0, 0)",
+  },
+  closeModalButton: {
+  }
 });
