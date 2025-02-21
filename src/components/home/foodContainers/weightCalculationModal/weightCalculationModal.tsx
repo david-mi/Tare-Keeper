@@ -44,6 +44,7 @@ export function WeightCalculationModal({ onCloseButtonPress, ...foodContainer }:
             onChangeText={handleInput}
             keyboardType={"numeric"}
             value={inputValue}
+            maxLength={5}
           />
         </View>
         <View style={styles.resultContainer}>

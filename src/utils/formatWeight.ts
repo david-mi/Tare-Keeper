@@ -1,5 +1,5 @@
 export function formatWeight(weightInGrams: number) {
-  const weightToString = String(weightInGrams);
+  return weightInGrams + " g";
 
   return weightToString.length > 3
     ? weightInGrams / 1000 + " kg"
