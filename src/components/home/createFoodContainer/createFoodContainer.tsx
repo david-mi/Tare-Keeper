@@ -1,0 +1,16 @@
+import { useState } from "react";
+import { Text, Pressable, Modal } from "react-native";
+import { FoodContainerCreationModal } from "./foodContainerCreationModal/foodContainerCreationModal";
+import { OpenModalButton } from "./openModalButton/openModalButton";
+
+export function CreateFoodContainer() {
+  const [isCreatingFoodContainer, setIsCreatingFoodContainer] = useState(false);
+
+  function toggleCreateFoodContainer() {
+    setIsCreatingFoodContainer((isCreatingFoodContainer) => !isCreatingFoodContainer);
+  }
+
+  return isCreatingFoodContainer
+    ? <FoodContainerCreationModal onCloseButtonPress={toggleCreateFoodContainer} />
+    : <OpenModalButton onPress={toggleCreateFoodContainer} />;
+}

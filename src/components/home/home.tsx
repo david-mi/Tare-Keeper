@@ -1,14 +1,18 @@
-import { View } from "react-native";
+import { ScrollView, View } from "react-native";
 import { FoodContainers } from "./foodContainers/foodContainers";
 import { styles } from "./home.styles";
 import { clientStore } from "@/src/services/clientStore/clientStore";
+import { CreateFoodContainer } from "./createFoodContainer/createFoodContainer";
 
 export function Home() {
   const foodContainers = clientStore((state) => state.foodContainers);
 
   return (
     <View style={styles.home}>
-      <FoodContainers foodContainers={foodContainers} />
+      <ScrollView style={styles.scrollWrapper}>
+        <FoodContainers foodContainers={foodContainers} />
+      </ScrollView>
+      <CreateFoodContainer />
     </View>
   );
 }
