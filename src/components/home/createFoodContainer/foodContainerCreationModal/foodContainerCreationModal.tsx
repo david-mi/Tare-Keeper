@@ -1,10 +1,11 @@
-import { Modal, Pressable, Text, TextInput, View } from "react-native";
+import { Text, TextInput, View } from "react-native";
 import { styles } from "./foodContainerCreationModal.styles";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { FoodContainerType } from "@/src/types";
 import { base64ImageMock } from "@/src/__mock__/foodContainers";
 import { RectangleButton } from "@/src/components/shared/rectangleButton/rectangleButton";
 import { clientStore } from "@/src/services/clientStore/clientStore";
+import { CustomModal } from "@/src/components/shared/customModal/customModal";
 
 interface Props {
   closeModal: () => void;
@@ -22,6 +23,7 @@ export function FoodContainerCreationModal({ closeModal }: Props) {
     name: "",
     weightInGrams: ""
   });
+  const nameInputElementRef = useRef<TextInput>(null!);
 
   function setFoodContainerName(name: string) {
     setFoodContainer((foodContainer) => ({
@@ -45,18 +47,22 @@ export function FoodContainerCreationModal({ closeModal }: Props) {
     closeModal();
   }
 
+  function focusNameInputElement() {
+    nameInputElementRef.current.focus();
+  }
+
   return (
-    <Modal
-      animationType="slide"
-      onRequestClose={closeModal}
+    <CustomModal
+      closeModalCallback={closeModal}
+      inputToFocusRef={nameInputElementRef}
     >
       <View style={styles.container}>
         <Text style={styles.title}>Ajouter un récipient</Text>
         <View style={styles.labelInputContainer}>
           <Text style={styles.label}>Nom</Text>
           <TextInput
+            ref={nameInputElementRef}
             style={styles.input}
-            autoFocus
             onChangeText={setFoodContainerName}
             value={foodContainer.name}
             maxLength={20}
@@ -66,7 +72,6 @@ export function FoodContainerCreationModal({ closeModal }: Props) {
           <Text style={styles.label}>Poids</Text>
           <TextInput
             style={styles.input}
-            autoFocus
             onChangeText={setFoodContainerWeight}
             keyboardType={"numeric"}
             value={String(foodContainer.weightInGrams)}
@@ -84,6 +89,6 @@ export function FoodContainerCreationModal({ closeModal }: Props) {
           style={styles.closeModalButton}
         />
       </View>
-    </Modal>
+    </CustomModal>
   );
 }

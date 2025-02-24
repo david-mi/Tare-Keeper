@@ -24,7 +24,7 @@ export function FoodContainers({ foodContainers }: Props) {
     return (
       <WeightCalculationModal
         {...selectedFoodContainer}
-        onCloseButtonPress={closeWeightCalculationModal}
+        closeModal={closeWeightCalculationModal}
       />
     );
   }
