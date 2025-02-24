@@ -1,9 +1,9 @@
 import { FoodContainerType } from "@/src/types";
-import { Alert, Modal, View, Text, Image, Button, TextInput } from "react-native";
+import { View, Text, Image, TextInput } from "react-native";
 import { styles } from "./weightCalculationModal.styles";
 import { formatWeight } from "@/src/utils";
 import { useRef, useState } from "react";
-import { RectangleButton } from "@/src/components/shared/rectangleButton/rectangleButton";
+import { CustomButton } from "@/src/components/shared/customButton/customButton";
 import { CustomModal } from "@/src/components/shared/customModal/customModal";
 
 type Props = {
@@ -53,7 +53,8 @@ export function WeightCalculationModal({ closeModal, ...foodContainer }: Props) 
           <Text style={styles.resultTitle}>Poids sans récipient</Text>
           <Text style={styles.result}>{calculateWeight(inputValue)}</Text>
         </View>
-        <RectangleButton
+        <CustomButton
+          theme="rectangle"
           style={styles.closeButton}
           onPress={closeModal}
           title={"Fermer"}

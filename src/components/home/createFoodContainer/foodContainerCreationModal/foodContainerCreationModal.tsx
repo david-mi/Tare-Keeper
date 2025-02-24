@@ -3,7 +3,7 @@ import { styles } from "./foodContainerCreationModal.styles";
 import { useRef, useState } from "react";
 import { FoodContainerType } from "@/src/types";
 import { base64ImageMock } from "@/src/__mock__/foodContainers";
-import { RectangleButton } from "@/src/components/shared/rectangleButton/rectangleButton";
+import { CustomButton } from "@/src/components/shared/customButton/customButton";
 import { clientStore } from "@/src/services/clientStore/clientStore";
 import { CustomModal } from "@/src/components/shared/customModal/customModal";
 
@@ -78,12 +78,14 @@ export function FoodContainerCreationModal({ closeModal }: Props) {
             maxLength={5}
           />
         </View>
-        <RectangleButton
+        <CustomButton
+          theme="rectangle"
           title={"Ajouter"}
           onPress={handleSubmit}
           style={styles.addFoodContainerButton}
         />
-        <RectangleButton
+        <CustomButton
+          theme="rectangle"
           title={"Fermer"}
           onPress={closeModal}
           style={styles.closeModalButton}

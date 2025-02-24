@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-  button: {
+  rectangleButton: {
     backgroundColor: "rgb(138, 35, 35)",
     paddingHorizontal: 20,
     height: 70,
