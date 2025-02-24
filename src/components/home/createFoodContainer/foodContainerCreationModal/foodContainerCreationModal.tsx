@@ -4,16 +4,18 @@ import { useState } from "react";
 import { FoodContainerType } from "@/src/types";
 import { base64ImageMock } from "@/src/__mock__/foodContainers";
 import { RectangleButton } from "@/src/components/shared/rectangleButton/rectangleButton";
+import { clientStore } from "@/src/services/clientStore/clientStore";
 
 interface Props {
-  onCloseButtonPress: () => void;
+  closeModal: () => void;
 }
 
 type FoodContainerFormType = Omit<FoodContainerType, "weightInGrams"> & {
   weightInGrams: string;
 };
 
-export function FoodContainerCreationModal({ onCloseButtonPress }: Props) {
+export function FoodContainerCreationModal({ closeModal }: Props) {
+  const addFoodContainer = clientStore((state) => state.addFoodContainer);
   const [foodContainer, setFoodContainer] = useState<FoodContainerFormType>({
     base64Picture: base64ImageMock,
     id: Math.random().toString(),
@@ -35,14 +37,18 @@ export function FoodContainerCreationModal({ onCloseButtonPress }: Props) {
     }));
   }
 
-  function addFoodContainer() {
-    console.log("Added");
+  function handleSubmit() {
+    addFoodContainer({
+      ...foodContainer,
+      weightInGrams: parseInt(foodContainer.weightInGrams)
+    });
+    closeModal();
   }
 
   return (
     <Modal
       animationType="slide"
-      onRequestClose={onCloseButtonPress}
+      onRequestClose={closeModal}
     >
       <View style={styles.container}>
         <Text style={styles.title}>Ajouter un récipient</Text>
@@ -69,12 +75,12 @@ export function FoodContainerCreationModal({ onCloseButtonPress }: Props) {
         </View>
         <RectangleButton
           title={"Ajouter"}
-          onPress={addFoodContainer}
+          onPress={handleSubmit}
           style={styles.addFoodContainerButton}
         />
         <RectangleButton
           title={"Fermer"}
-          onPress={onCloseButtonPress}
+          onPress={closeModal}
           style={styles.closeModalButton}
         />
       </View>

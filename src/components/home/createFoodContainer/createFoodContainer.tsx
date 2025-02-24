@@ -11,6 +11,6 @@ export function CreateFoodContainer() {
   }
 
   return isCreatingFoodContainer
-    ? <FoodContainerCreationModal onCloseButtonPress={toggleCreateFoodContainer} />
+    ? <FoodContainerCreationModal closeModal={toggleCreateFoodContainer} />
     : <OpenModalButton onPress={toggleCreateFoodContainer} />;
 }
