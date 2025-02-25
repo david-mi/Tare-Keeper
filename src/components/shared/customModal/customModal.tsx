@@ -1,14 +1,15 @@
 import { ComponentProps, MutableRefObject } from "react";
-import { Modal, NativeSyntheticEvent, TextInput, Pressable } from "react-native";
+import { Modal, NativeSyntheticEvent, TextInput, Pressable, Text, View } from "react-native";
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { styles } from "./customModal.styles";
 
 type Props = ComponentProps<typeof Modal> & {
   inputToFocusRef?: MutableRefObject<TextInput>;
   closeModalCallback: () => void;
+  title?: string;
 };
 
-export function CustomModal({ children, inputToFocusRef, closeModalCallback, ...modalProps }: Props) {
+export function CustomModal({ children, inputToFocusRef, closeModalCallback, title = "", ...modalProps }: Props) {
 
   function onShow(event: NativeSyntheticEvent<any>) {
     if (inputToFocusRef?.current) {
@@ -31,10 +32,15 @@ export function CustomModal({ children, inputToFocusRef, closeModalCallback, ...
       onShow={onShow}
       onRequestClose={onRequestClose}
     >
-      <Pressable style={styles.closeButton} onPress={closeModalCallback}>
-        <AntDesign name="closesquare" size={50} color="black" />
-      </Pressable>
-      {children}
+      <View style={styles.contentContainer}>
+        <View style={styles.header}>
+          <Text style={styles.title}>{title}</Text>
+          <Pressable style={styles.closeButton} onPress={closeModalCallback}>
+            <AntDesign style={styles.closeButtonIcon} name="closesquare" />
+          </Pressable>
+        </View>
+        {children}
+      </View>
     </Modal>
   );
 }

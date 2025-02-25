@@ -13,8 +13,8 @@ interface RectangleButtonProps extends PressablePropsWithRef {
 
 type CustomButtonProps = RectangleButtonProps;
 
-export const CustomButton = forwardRef(({ style, ...props }: CustomButtonProps, _) => {
-  const styleProps = style as StyleProp<ViewStyle>;
+export const CustomButton = forwardRef(({ style, disabled, ...props }: CustomButtonProps, _) => {
+  const styleProps = [style as StyleProp<ViewStyle>, disabled && styles.disabled];
 
   switch (props.theme) {
     case "rectangle": {

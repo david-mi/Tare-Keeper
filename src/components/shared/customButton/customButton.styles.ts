@@ -13,5 +13,8 @@ export const styles = StyleSheet.create({
     color: "white",
     fontSize: 22,
     fontWeight: 600
-  }
+  },
+  disabled: {
+    opacity: 0.5,
+  },
 });

@@ -56,9 +56,9 @@ export function FoodContainerCreationModal({ closeModal }: Props) {
     <CustomModal
       closeModalCallback={closeModal}
       inputToFocusRef={nameInputElementRef}
+      title="Ajout d'un récipient"
     >
       <View style={styles.container}>
-        <Text style={styles.title}>Ajouter un récipient</Text>
         <View style={styles.labelInputContainer}>
           <Text style={styles.label}>Nom</Text>
           <TextInput
@@ -81,7 +81,7 @@ export function FoodContainerCreationModal({ closeModal }: Props) {
         </View>
         <CustomButton
           theme="rectangle"
-          title={"Ajouter"}
+          title={"Valider"}
           onPress={handleSubmit}
           style={styles.addFoodContainerButton}
         />
