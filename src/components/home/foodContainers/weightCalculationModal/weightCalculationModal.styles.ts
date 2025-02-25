@@ -31,24 +31,6 @@ export const styles = StyleSheet.create({
     fontSize: 15,
     color: "white",
   },
-  weightInputLabelContainer: {
-    width: "100%",
-    gap: 5
-  },
-  weightInput: {
-    flexGrow: 1,
-    borderWidth: 1,
-    borderColor: "rgba(160, 160, 160, 0.43)",
-    height: 70,
-    paddingHorizontal: 10,
-    fontSize: 25,
-    fontWeight: 600,
-    backgroundColor: "rgb(244, 242, 242)",
-  },
-  weightInputLabel: {
-    fontSize: 17,
-    fontWeight: "600"
-  },
   resultContainer: {
     width: "100%",
     gap: 5

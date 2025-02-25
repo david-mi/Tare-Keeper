@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   foodContainer: {
-    backgroundColor: "white",
+    backgroundColor: "#00853E",
     borderRadius: 15,
     flexDirection: "row",
     overflow: "hidden",
@@ -23,9 +23,15 @@ export const styles = StyleSheet.create({
   },
   name: {
     fontSize: 20,
-    fontWeight: 600
+    fontWeight: 600,
+    color: "white"
   },
   weight: {
-    fontStyle: "italic"
+    fontStyle: "italic",
+    color: "white"
+  },
+  pictureContainer: {
+    borderRadius: 15,
+    overflow: "hidden"
   }
 });

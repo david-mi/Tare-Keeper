@@ -4,6 +4,7 @@ import { styles } from "./weightCalculationModal.styles";
 import { formatWeight } from "@/src/utils";
 import { useRef, useState } from "react";
 import { CustomModal } from "@/src/components/shared/customModal/customModal";
+import { CustomTextInputWithLabel } from "@/src/components/shared/customTextInputWithLabel/customTextInputWithLabel";
 
 type Props = {
   closeModal: () => void;
@@ -37,17 +38,15 @@ export function WeightCalculationModal({ closeModal, ...foodContainer }: Props) 
         <View style={styles.infos}>
           <Text style={styles.name}>{name}</Text>
         </View>
-        <View style={styles.weightInputLabelContainer}>
-          <Text style={styles.weightInputLabel}>Poids total (&gt; {weightInGrams} g)</Text>
-          <TextInput
-            ref={weightInputElementRef}
-            style={styles.weightInput}
-            onChangeText={handleInput}
-            keyboardType={"numeric"}
-            value={inputValue}
-            maxLength={5}
-          />
-        </View>
+        <CustomTextInputWithLabel
+          label="Poids total"
+          labelDescription="g"
+          ref={weightInputElementRef}
+          onChangeText={handleInput}
+          keyboardType={"numeric"}
+          value={inputValue}
+          maxLength={5}
+        />
         <View style={styles.resultContainer}>
           <Text style={styles.resultTitle}>Poids sans récipient</Text>
           <Text style={styles.result}>{calculateWeight(inputValue)}</Text>

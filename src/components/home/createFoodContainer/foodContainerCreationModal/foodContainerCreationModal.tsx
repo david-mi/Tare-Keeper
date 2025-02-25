@@ -7,6 +7,7 @@ import { CustomButton } from "@/src/components/shared/customButton/customButton"
 import { clientStore } from "@/src/services/clientStore/clientStore";
 import { CustomModal } from "@/src/components/shared/customModal/customModal";
 import { randomUUID } from "expo-crypto";
+import { CustomTextInputWithLabel } from "@/src/components/shared/customTextInputWithLabel/customTextInputWithLabel";
 
 interface Props {
   closeModal: () => void;
@@ -62,32 +63,22 @@ export function FoodContainerCreationModal({ closeModal }: Props) {
       title="Ajout d'un récipient"
     >
       <View style={styles.container}>
-        <View style={styles.labelInputContainer}>
-          <View style={styles.labelContainer}>
-            <Text style={styles.label}>Nom</Text>
-            <Text style={styles.labelDescription}>(max. 20 caractères)</Text>
-          </View>
-          <TextInput
-            ref={nameInputElementRef}
-            style={styles.input}
-            onChangeText={setFoodContainerName}
-            value={foodContainer.name}
-            maxLength={20}
-          />
-        </View>
-        <View style={styles.labelInputContainer}>
-          <View style={styles.labelContainer}>
-            <Text style={styles.label}>Poids</Text>
-            <Text style={styles.labelDescription}>(g)</Text>
-          </View>
-          <TextInput
-            style={styles.input}
-            onChangeText={setFoodContainerWeight}
-            keyboardType={"numeric"}
-            value={String(foodContainer.weightInGrams)}
-            maxLength={5}
-          />
-        </View>
+        <CustomTextInputWithLabel
+          label="Nom"
+          labelDescription="20 caractères max."
+          ref={nameInputElementRef}
+          onChangeText={setFoodContainerName}
+          value={foodContainer.name}
+          maxLength={20}
+        />
+        <CustomTextInputWithLabel
+          label="Poids"
+          labelDescription="g"
+          onChangeText={setFoodContainerWeight}
+          keyboardType={"numeric"}
+          value={String(foodContainer.weightInGrams)}
+          maxLength={5}
+        />
         <CustomButton
           disabled={validateInputs() === false}
           theme="rectangle"
