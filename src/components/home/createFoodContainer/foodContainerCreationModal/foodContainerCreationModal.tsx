@@ -85,12 +85,6 @@ export function FoodContainerCreationModal({ closeModal }: Props) {
           onPress={handleSubmit}
           style={styles.addFoodContainerButton}
         />
-        <CustomButton
-          theme="rectangle"
-          title={"Fermer"}
-          onPress={closeModal}
-          style={styles.closeModalButton}
-        />
       </View>
     </CustomModal>
   );

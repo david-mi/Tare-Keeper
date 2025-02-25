@@ -1,5 +1,7 @@
-import { ComponentProps, MutableRefObject, PropsWithChildren, ReactNode } from "react";
-import { Modal, NativeSyntheticEvent, TextInput } from "react-native";
+import { ComponentProps, MutableRefObject } from "react";
+import { Modal, NativeSyntheticEvent, TextInput, Pressable } from "react-native";
+import AntDesign from '@expo/vector-icons/AntDesign';
+import { styles } from "./customModal.styles";
 
 type Props = ComponentProps<typeof Modal> & {
   inputToFocusRef?: MutableRefObject<TextInput>;
@@ -29,6 +31,9 @@ export function CustomModal({ children, inputToFocusRef, closeModalCallback, ...
       onShow={onShow}
       onRequestClose={onRequestClose}
     >
+      <Pressable style={styles.closeButton} onPress={closeModalCallback}>
+        <AntDesign name="closesquare" size={50} color="black" />
+      </Pressable>
       {children}
     </Modal>
   );
