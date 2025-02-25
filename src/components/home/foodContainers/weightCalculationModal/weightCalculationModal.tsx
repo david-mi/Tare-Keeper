@@ -32,11 +32,11 @@ export function WeightCalculationModal({ closeModal, ...foodContainer }: Props) 
     <CustomModal
       closeModalCallback={closeModal}
       inputToFocusRef={weightInputElementRef}
+      title={name}
     >
       <View style={styles.foodContainer}>
-        <Image source={{ uri: base64Picture, width: 100, height: 100 }} />
-        <View style={styles.infos}>
-          <Text style={styles.name}>{name}</Text>
+        <View style={styles.pictureContainer}>
+          <Image source={{ uri: foodContainer.base64Picture, width: 120, height: 120 }} />
         </View>
         <CustomTextInputWithLabel
           label="Poids total"

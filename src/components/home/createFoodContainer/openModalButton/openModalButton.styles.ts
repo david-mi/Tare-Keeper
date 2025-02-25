@@ -1,4 +1,4 @@
-import { Button, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 
 const BUTTON_ICON_FONT_SIZE = 40;
 const BUTTON_SIZE = 70;
@@ -21,6 +21,14 @@ export const styles = StyleSheet.create({
     alignSelf: "center",
     height: BUTTON_SIZE,
     width: BUTTON_SIZE,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   icon: {
     color: "white",

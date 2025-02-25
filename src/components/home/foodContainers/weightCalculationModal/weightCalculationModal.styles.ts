@@ -11,6 +11,10 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 20,
     gap: 20
   },
+  pictureContainer: {
+    borderRadius: 15,
+    overflow: "hidden"
+  },
   infos: {
     backgroundColor: "black",
     alignSelf: "stretch",
@@ -33,18 +37,24 @@ export const styles = StyleSheet.create({
   },
   resultContainer: {
     width: "100%",
-    gap: 5
+    gap: 5,
+    backgroundColor: "#00853E",
+    borderRadius: 20,
+    minHeight: 100,
+    padding: 20
   },
   resultTitle: {
-    fontSize: 17,
-    fontWeight: "600"
+    fontSize: 19,
+    fontWeight: "600",
+    textAlign: "center",
+    color: "white"
   },
   result: {
-    lineHeight: 70,
     paddingHorizontal: 10,
-    fontSize: 25,
-    fontWeight: 600,
-    backgroundColor: "rgb(114, 255, 161)",
+    fontSize: 50,
+    fontWeight: 800,
+    color: "white",
+    textAlign: "center",
   },
   closeButton: {
     marginTop: "auto",
