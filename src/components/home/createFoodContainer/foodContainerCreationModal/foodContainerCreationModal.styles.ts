@@ -27,9 +27,19 @@ export const styles = StyleSheet.create({
     fontWeight: 600,
     backgroundColor: "rgb(244, 242, 242)",
   },
+  labelContainer: {
+    flexDirection: "row",
+    alignItems: "flex-end",
+    gap: 5
+  },
   label: {
-    fontSize: 17,
-    fontWeight: "600"
+    fontSize: 16,
+    fontWeight: "600",
+  },
+  labelDescription: {
+    fontSize: 12,
+    fontStyle: "italic",
+    marginBottom: 2
   },
   addFoodContainerButton: {
     marginTop: "auto",

@@ -55,10 +55,6 @@ export function FoodContainerCreationModal({ closeModal }: Props) {
     closeModal();
   }
 
-  function focusNameInputElement() {
-    nameInputElementRef.current.focus();
-  }
-
   return (
     <CustomModal
       closeModalCallback={closeModal}
@@ -67,7 +63,10 @@ export function FoodContainerCreationModal({ closeModal }: Props) {
     >
       <View style={styles.container}>
         <View style={styles.labelInputContainer}>
-          <Text style={styles.label}>Nom</Text>
+          <View style={styles.labelContainer}>
+            <Text style={styles.label}>Nom</Text>
+            <Text style={styles.labelDescription}>(max. 20 caractères)</Text>
+          </View>
           <TextInput
             ref={nameInputElementRef}
             style={styles.input}
@@ -77,7 +76,10 @@ export function FoodContainerCreationModal({ closeModal }: Props) {
           />
         </View>
         <View style={styles.labelInputContainer}>
-          <Text style={styles.label}>Poids</Text>
+          <View style={styles.labelContainer}>
+            <Text style={styles.label}>Poids</Text>
+            <Text style={styles.labelDescription}>(g)</Text>
+          </View>
           <TextInput
             style={styles.input}
             onChangeText={setFoodContainerWeight}
