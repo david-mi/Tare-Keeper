@@ -6,6 +6,7 @@ import { base64ImageMock } from "@/src/__mock__/foodContainers";
 import { CustomButton } from "@/src/components/shared/customButton/customButton";
 import { clientStore } from "@/src/services/clientStore/clientStore";
 import { CustomModal } from "@/src/components/shared/customModal/customModal";
+import { randomUUID } from "expo-crypto";
 
 interface Props {
   closeModal: () => void;
@@ -19,7 +20,7 @@ export function FoodContainerCreationModal({ closeModal }: Props) {
   const addFoodContainer = clientStore((state) => state.addFoodContainer);
   const [foodContainer, setFoodContainer] = useState<FoodContainerFormType>({
     base64Picture: base64ImageMock,
-    id: Math.random().toString(),
+    id: randomUUID(),
     name: "",
     weightInGrams: ""
   });
