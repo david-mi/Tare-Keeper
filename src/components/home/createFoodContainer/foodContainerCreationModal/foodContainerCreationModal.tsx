@@ -40,6 +40,13 @@ export function FoodContainerCreationModal({ closeModal }: Props) {
     }));
   }
 
+  function validateInputs() {
+    return (
+      foodContainer.name.length > 0 &&
+      foodContainer.weightInGrams.length > 0
+    );
+  }
+
   function handleSubmit() {
     addFoodContainer({
       ...foodContainer,
@@ -80,6 +87,7 @@ export function FoodContainerCreationModal({ closeModal }: Props) {
           />
         </View>
         <CustomButton
+          disabled={validateInputs() === false}
           theme="rectangle"
           title={"Valider"}
           onPress={handleSubmit}
