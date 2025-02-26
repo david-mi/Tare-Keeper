@@ -1,4 +1,4 @@
-import { ScrollView, View } from "react-native";
+import { View } from "react-native";
 import { FoodContainers } from "./foodContainers/foodContainers";
 import { styles } from "./home.styles";
 import { clientStore } from "@/src/services/clientStore/clientStore";
@@ -9,9 +9,7 @@ export function Home() {
 
   return (
     <View style={styles.home}>
-      <ScrollView style={styles.scrollWrapper}>
-        <FoodContainers foodContainers={foodContainers} />
-      </ScrollView>
+      <FoodContainers foodContainers={foodContainers} />
       <CreateFoodContainer />
     </View>
   );
