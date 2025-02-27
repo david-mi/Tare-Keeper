@@ -1,9 +1,9 @@
 import { FoodContainerType } from "@/src/types";
-import { View } from "react-native";
+import { FlatList, ListRenderItem } from "react-native";
 import { styles } from "./foodContainers.styles";
 import { FoodContainer } from "./foodContainer/foodContainer";
 import { WeightCalculationModal } from "./weightCalculationModal/weightCalculationModal";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 interface Props {
   foodContainers: FoodContainerType[];
@@ -20,6 +20,16 @@ export function FoodContainers({ foodContainers }: Props) {
     setSelectedFoodContainer(null);
   }
 
+  const renderItem: ListRenderItem<FoodContainerType> = useCallback(({ item }) => {
+    return (
+      <FoodContainer
+        key={item.id}
+        onPress={openWeightCalculationModal}
+        {...item}
+      />
+    );
+  }, []);
+
   if (selectedFoodContainer) {
     return (
       <WeightCalculationModal
@@ -30,16 +40,10 @@ export function FoodContainers({ foodContainers }: Props) {
   }
 
   return (
-    <View style={styles.foodContainers}>
-      {foodContainers.map(({ ...foodContainerProps }) => {
-        return (
-          <FoodContainer
-            key={foodContainerProps.id}
-            onPress={openWeightCalculationModal}
-            {...foodContainerProps}
-          />
-        );
-      })}
-    </View>
+    <FlatList
+      contentContainerStyle={styles.foodContainers}
+      data={foodContainers}
+      renderItem={renderItem}
+    />
   );
 }
