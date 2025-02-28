@@ -4,7 +4,8 @@ import { DELETE_BUTTON_WIDTH, styles } from "./deleteFoodContainer.styles";
 import { SwipeableMethods } from "react-native-gesture-handler/lib/typescript/components/ReanimatedSwipeable";
 import { Alert } from "react-native";
 import { FoodContainerType } from "@/src/types";
-import Animated, { interpolate, SharedValue, useAnimatedStyle } from "react-native-reanimated";
+import Animated, { interpolate, SharedValue, useAnimatedStyle, useSharedValue } from "react-native-reanimated";
+import { clientStore } from "@/src/services/clientStore/clientStore";
 
 interface Props {
   swipeable: SwipeableMethods;
@@ -13,6 +14,8 @@ interface Props {
 }
 
 export function DeleteFoodContainer({ swipeable, foodContainer, dragAnimatedValue }: Props) {
+  const deleteFoodContainer = clientStore((state) => state.deleteFoodContainer);
+
   const animations = useAnimatedStyle(() => {
     return {
       transform: [
@@ -28,7 +31,7 @@ export function DeleteFoodContainer({ swipeable, foodContainer, dragAnimatedValu
       {
         text: "Supprimer",
         onPress: () => {
-          console.log("Delete confirm");
+          deleteFoodContainer(foodContainer.id);
         }
       },
       {
@@ -36,6 +39,7 @@ export function DeleteFoodContainer({ swipeable, foodContainer, dragAnimatedValu
         onPress: () => {
           console.log("Delete abort");
           swipeable.close();
+
         }
       }
     ]);
