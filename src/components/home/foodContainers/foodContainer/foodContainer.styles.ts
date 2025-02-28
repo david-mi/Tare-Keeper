@@ -1,13 +1,7 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-  foodContainer: {
-    backgroundColor: "white",
-    borderRadius: 15,
-    flexDirection: "row",
-    overflow: "hidden",
-    paddingVertical: 10,
-    paddingHorizontal: 20,
+  wrapper: {
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -16,6 +10,15 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
+    backgroundColor: "white",
+    borderRadius: 15,
+  },
+  foodContainer: {
+    backgroundColor: "white",
+    flexDirection: "row",
+    overflow: "hidden",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
   },
   infos: {
     flex: 1,

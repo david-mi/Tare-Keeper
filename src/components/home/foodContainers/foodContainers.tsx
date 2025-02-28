@@ -1,9 +1,10 @@
 import { FoodContainerType } from "@/src/types";
-import { FlatList, ListRenderItem } from "react-native";
+import { ListRenderItem } from "react-native";
 import { styles } from "./foodContainers.styles";
 import { FoodContainer } from "./foodContainer/foodContainer";
 import { WeightCalculationModal } from "./weightCalculationModal/weightCalculationModal";
 import { useCallback, useState } from "react";
+import Animated, { LinearTransition } from "react-native-reanimated";
 
 interface Props {
   foodContainers: FoodContainerType[];
@@ -40,10 +41,11 @@ export function FoodContainers({ foodContainers }: Props) {
   }
 
   return (
-    <FlatList
+    <Animated.FlatList
       contentContainerStyle={styles.foodContainers}
       data={foodContainers}
       renderItem={renderItem}
+      itemLayoutAnimation={LinearTransition}
     />
   );
 }
