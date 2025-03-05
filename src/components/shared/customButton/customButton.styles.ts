@@ -9,6 +9,14 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 10,
   },
+  roundButton: {
+    alignItems: "center",
+    justifyContent: "center",
+    height: 40,
+    width: 40,
+    borderRadius: 50,
+    backgroundColor: "black",
+  },
   title: {
     color: "white",
     fontSize: 22,

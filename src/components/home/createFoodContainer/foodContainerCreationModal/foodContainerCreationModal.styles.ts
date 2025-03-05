@@ -4,6 +4,7 @@ export const styles = StyleSheet.create({
   container: {
     gap: 20,
     padding: 20,
+    flexGrow: 1
   },
   addImageContainer: {
     alignSelf: "center"
@@ -15,6 +16,12 @@ export const styles = StyleSheet.create({
   image: {
     width: "100%",
     height: "100%"
+  },
+  pictureButtonsContainer: {
+    marginTop: 5,
+    justifyContent: "center",
+    flexDirection: "row",
+    gap: 10,
   },
   title: {
     fontSize: 25,

@@ -7,6 +7,7 @@ import { clientStore } from "@/src/services/clientStore/clientStore";
 import { CustomModal } from "@/src/components/shared/customModal/customModal";
 import { randomUUID } from "expo-crypto";
 import { CustomTextInputWithLabel } from "@/src/components/shared/customTextInputWithLabel/customTextInputWithLabel";
+import * as ImagePicker from "expo-image-picker";
 
 interface Props {
   closeModal: () => void;
@@ -41,8 +42,6 @@ export function FoodContainerCreationModal({ closeModal }: Props) {
   }
 
   function validateInputs() {
-    console.log(foodContainer.name.length, foodContainer.weightInGrams.length, foodContainer.name.length > 0 &&
-      foodContainer.weightInGrams.length > 0);
     return (
       foodContainer.name.length > 0 &&
       foodContainer.weightInGrams.length > 0
@@ -54,7 +53,26 @@ export function FoodContainerCreationModal({ closeModal }: Props) {
       ...foodContainer,
       weightInGrams: parseInt(foodContainer.weightInGrams)
     });
+
     closeModal();
+  }
+
+  async function selectImageFromGallery() {
+    const { canceled, assets } = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: "images",
+      allowsEditing: true,
+      aspect: [1, 1],
+      quality: 1,
+      base64: true,
+    });
+
+    if (canceled === false) {
+      const { base64 } = assets[0];
+      setFoodContainer((foodContainer) => ({
+        ...foodContainer,
+        base64Picture: "data:image/jpeg;base64," + base64
+      }));
+    }
   }
 
   return (
@@ -63,7 +81,11 @@ export function FoodContainerCreationModal({ closeModal }: Props) {
       inputToFocusRef={nameInputElementRef}
       title="Ajout d'un récipient"
     >
-      <ScrollView style={{ flex: 1 }} contentContainerStyle={styles.container}>
+      <ScrollView
+        style={{ flex: 1 }} contentContainerStyle={styles.container}
+        keyboardDismissMode="interactive"
+        keyboardShouldPersistTaps="always"
+      >
         <View style={styles.addImageContainer}>
           <View style={styles.imageContainer}>
             <Image
@@ -72,6 +94,14 @@ export function FoodContainerCreationModal({ closeModal }: Props) {
                 : { uri: foodContainer.base64Picture }
               }
               style={styles.image}
+            />
+          </View>
+          <View style={styles.pictureButtonsContainer}>
+            <CustomButton
+              style={{ backgroundColor: "#00853E" }}
+              iconName="picture"
+              theme="circle"
+              onPress={selectImageFromGallery}
             />
           </View>
         </View>
