@@ -21,6 +21,7 @@ export const CustomButton = forwardRef(({ style, disabled, ...props }: CustomBut
       return (
         <Pressable
           {...props}
+          disabled={disabled}
           style={[styles.rectangleButton, styleProps]}
         >
           <Text style={[styles.title, props.titleStyle]}>{props.title}</Text>
