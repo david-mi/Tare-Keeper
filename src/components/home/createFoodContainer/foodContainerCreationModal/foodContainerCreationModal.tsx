@@ -1,8 +1,7 @@
-import { Text, TextInput, View } from "react-native";
+import { Image, ScrollView, TextInput, View } from "react-native";
 import { styles } from "./foodContainerCreationModal.styles";
 import { useRef, useState } from "react";
 import { FoodContainerType } from "@/src/types";
-import { base64ImageMock } from "@/src/__mock__/foodContainers";
 import { CustomButton } from "@/src/components/shared/customButton/customButton";
 import { clientStore } from "@/src/services/clientStore/clientStore";
 import { CustomModal } from "@/src/components/shared/customModal/customModal";
@@ -20,7 +19,7 @@ type FoodContainerFormType = Omit<FoodContainerType, "weightInGrams"> & {
 export function FoodContainerCreationModal({ closeModal }: Props) {
   const addFoodContainer = clientStore((state) => state.addFoodContainer);
   const [foodContainer, setFoodContainer] = useState<FoodContainerFormType>({
-    base64Picture: base64ImageMock,
+    base64Picture: "",
     id: randomUUID(),
     name: "",
     weightInGrams: ""
@@ -42,6 +41,8 @@ export function FoodContainerCreationModal({ closeModal }: Props) {
   }
 
   function validateInputs() {
+    console.log(foodContainer.name.length, foodContainer.weightInGrams.length, foodContainer.name.length > 0 &&
+      foodContainer.weightInGrams.length > 0);
     return (
       foodContainer.name.length > 0 &&
       foodContainer.weightInGrams.length > 0
@@ -62,7 +63,18 @@ export function FoodContainerCreationModal({ closeModal }: Props) {
       inputToFocusRef={nameInputElementRef}
       title="Ajout d'un récipient"
     >
-      <View style={styles.container}>
+      <ScrollView style={{ flex: 1 }} contentContainerStyle={styles.container}>
+        <View style={styles.addImageContainer}>
+          <View style={styles.imageContainer}>
+            <Image
+              source={foodContainer.base64Picture.length === 0
+                ? require("./default_picture.png")
+                : { uri: foodContainer.base64Picture }
+              }
+              style={styles.image}
+            />
+          </View>
+        </View>
         <CustomTextInputWithLabel
           label="Nom"
           labelDescription="20 caractères max."
@@ -86,7 +98,7 @@ export function FoodContainerCreationModal({ closeModal }: Props) {
           onPress={handleSubmit}
           style={styles.addFoodContainerButton}
         />
-      </View>
+      </ScrollView>
     </CustomModal>
   );
 }
