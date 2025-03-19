@@ -1,4 +1,4 @@
-import { Image, ScrollView, TextInput, View } from "react-native";
+import { ScrollView, TextInput } from "react-native";
 import { styles } from "./foodContainerCreationModal.styles";
 import { useRef, useState } from "react";
 import { FoodContainerType } from "@/src/types";
@@ -7,7 +7,8 @@ import { clientStore } from "@/src/services/clientStore/clientStore";
 import { CustomModal } from "@/src/components/shared/customModal/customModal";
 import { randomUUID } from "expo-crypto";
 import { CustomTextInputWithLabel } from "@/src/components/shared/customTextInputWithLabel/customTextInputWithLabel";
-import * as ImagePicker from "expo-image-picker";
+import { FoodContainerPicture } from "./foodContainerPicture/foodContainerPicture";
+import { defaultBase64Picture } from "./foodContainerPicture/defaultBase64Picture";
 
 interface Props {
   closeModal: () => void;
@@ -20,7 +21,7 @@ type FoodContainerFormType = Omit<FoodContainerType, "weightInGrams"> & {
 export function FoodContainerCreationModal({ closeModal }: Props) {
   const addFoodContainer = clientStore((state) => state.addFoodContainer);
   const [foodContainer, setFoodContainer] = useState<FoodContainerFormType>({
-    base64Picture: "",
+    base64Picture: defaultBase64Picture,
     id: randomUUID(),
     name: "",
     weightInGrams: ""
@@ -41,6 +42,13 @@ export function FoodContainerCreationModal({ closeModal }: Props) {
     }));
   }
 
+  function setFoodContainerPicture(base64: string) {
+    setFoodContainer((foodContainer) => ({
+      ...foodContainer,
+      base64Picture: "data:image/jpeg;base64," + base64
+    }));
+  }
+
   function validateInputs() {
     return (
       foodContainer.name.length > 0 &&
@@ -48,31 +56,13 @@ export function FoodContainerCreationModal({ closeModal }: Props) {
     );
   }
 
-  function handleSubmit() {
+  function submitFoodContainer() {
     addFoodContainer({
       ...foodContainer,
       weightInGrams: parseInt(foodContainer.weightInGrams)
     });
 
     closeModal();
-  }
-
-  async function selectImageFromGallery() {
-    const { canceled, assets } = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: "images",
-      allowsEditing: true,
-      aspect: [1, 1],
-      quality: 1,
-      base64: true,
-    });
-
-    if (canceled === false) {
-      const { base64 } = assets[0];
-      setFoodContainer((foodContainer) => ({
-        ...foodContainer,
-        base64Picture: "data:image/jpeg;base64," + base64
-      }));
-    }
   }
 
   return (
@@ -86,25 +76,10 @@ export function FoodContainerCreationModal({ closeModal }: Props) {
         keyboardDismissMode="interactive"
         keyboardShouldPersistTaps="always"
       >
-        <View style={styles.addImageContainer}>
-          <View style={styles.imageContainer}>
-            <Image
-              source={foodContainer.base64Picture.length === 0
-                ? require("./default_picture.png")
-                : { uri: foodContainer.base64Picture }
-              }
-              style={styles.image}
-            />
-          </View>
-          <View style={styles.pictureButtonsContainer}>
-            <CustomButton
-              style={{ backgroundColor: "#00853E" }}
-              iconName="picture"
-              theme="circle"
-              onPress={selectImageFromGallery}
-            />
-          </View>
-        </View>
+        <FoodContainerPicture
+          base64Picture={foodContainer.base64Picture}
+          setPicture={setFoodContainerPicture}
+        />
         <CustomTextInputWithLabel
           label="Nom"
           labelDescription="20 caractères max."
@@ -125,7 +100,7 @@ export function FoodContainerCreationModal({ closeModal }: Props) {
           disabled={validateInputs() === false}
           theme="rectangle"
           title={"Valider"}
-          onPress={handleSubmit}
+          onPress={submitFoodContainer}
           style={styles.addFoodContainerButton}
         />
       </ScrollView>

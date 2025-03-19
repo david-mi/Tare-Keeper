@@ -6,23 +6,6 @@ export const styles = StyleSheet.create({
     padding: 20,
     flexGrow: 1
   },
-  addImageContainer: {
-    alignSelf: "center"
-  },
-  imageContainer: {
-    height: 150,
-    width: 150,
-  },
-  image: {
-    width: "100%",
-    height: "100%"
-  },
-  pictureButtonsContainer: {
-    marginTop: 5,
-    justifyContent: "center",
-    flexDirection: "row",
-    gap: 10,
-  },
   title: {
     fontSize: 25,
     fontWeight: 600,
