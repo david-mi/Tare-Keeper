@@ -3,7 +3,7 @@ import { ListRenderItem } from "react-native";
 import { styles } from "./foodContainers.styles";
 import { FoodContainer } from "./foodContainer/foodContainer";
 import { WeightCalculationModal } from "./weightCalculationModal/weightCalculationModal";
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import Animated, { LinearTransition } from "react-native-reanimated";
 
 interface Props {
@@ -12,6 +12,8 @@ interface Props {
 
 export function FoodContainers({ foodContainers }: Props) {
   const [selectedFoodContainer, setSelectedFoodContainer] = useState<FoodContainerType | null>(null);
+  const animatedFlatListRef = useRef<Animated.FlatList<FoodContainerType[]>>(null!);
+  const foodContainersAmountRef = useRef(foodContainers.length);
 
   function openWeightCalculationModal(foodContainer: FoodContainerType) {
     setSelectedFoodContainer(foodContainer);
@@ -31,6 +33,14 @@ export function FoodContainers({ foodContainers }: Props) {
     );
   }, []);
 
+  const onContentSizeChange = () => {
+    const foodContainersLength = foodContainers.length;
+    if (foodContainersLength > foodContainersAmountRef.current) {
+      animatedFlatListRef.current.scrollToEnd();
+      foodContainersAmountRef.current++;
+    }
+  };
+
   if (selectedFoodContainer) {
     return (
       <WeightCalculationModal
@@ -42,10 +52,12 @@ export function FoodContainers({ foodContainers }: Props) {
 
   return (
     <Animated.FlatList
+      ref={animatedFlatListRef}
       contentContainerStyle={styles.foodContainers}
       data={foodContainers}
       renderItem={renderItem}
       itemLayoutAnimation={LinearTransition}
+      onContentSizeChange={onContentSizeChange}
     />
   );
 }
