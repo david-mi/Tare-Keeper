@@ -7,6 +7,7 @@ import { appStorage } from "./storage";
 interface StoreType {
   foodContainers: FoodContainerType[];
   addFoodContainer: (foodContainer: FoodContainerType) => void;
+  editFoodContainer: (foodContainer: FoodContainerType) => void;
   deleteFoodContainer: (id: string) => void;
 }
 
@@ -19,6 +20,15 @@ export const clientStore = create<StoreType>()(
           ...get().foodContainers,
           foodContainer
         ]
+      }),
+      editFoodContainer: (foodContainerToEdit) => set({
+        foodContainers: get()
+          .foodContainers
+          .map((foodContainer) => {
+            return foodContainer.id === foodContainerToEdit.id
+              ? foodContainerToEdit
+              : foodContainer;
+          })
       }),
       deleteFoodContainer: (id: string) => set({
         foodContainers: get().foodContainers.filter((foodContainer) => {
