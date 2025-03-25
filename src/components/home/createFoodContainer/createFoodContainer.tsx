@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Text, Pressable, Modal } from "react-native";
 import { FoodContainerCreationModal } from "./foodContainerCreationModal/foodContainerCreationModal";
 import { OpenModalButton } from "./openModalButton/openModalButton";
 
