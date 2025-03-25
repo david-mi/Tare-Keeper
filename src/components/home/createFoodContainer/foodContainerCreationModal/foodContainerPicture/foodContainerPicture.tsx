@@ -2,6 +2,7 @@ import { CustomButton } from "@/src/components/shared/customButton/customButton"
 import { Image, View } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import { styles } from "./foodContainerPicture.styles";
+import { defaultBase64Picture } from "./defaultBase64Picture";
 
 interface Props {
   base64Picture: string;
@@ -9,6 +10,8 @@ interface Props {
 }
 
 export function FoodContainerPicture({ setPicture, base64Picture }: Props) {
+  const hasDefaultBase64Picture = base64Picture === defaultBase64Picture;
+
   async function selectImageFromGallery() {
     const { canceled, assets } = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: "images",
@@ -22,6 +25,10 @@ export function FoodContainerPicture({ setPicture, base64Picture }: Props) {
       const { base64 } = assets[0];
       setPicture(base64 as string);
     }
+  }
+
+  function setDefaulBase64Picture() {
+    setPicture(defaultBase64Picture.replace("data:image/png;base64,", ""));
   }
 
   return (
@@ -39,6 +46,14 @@ export function FoodContainerPicture({ setPicture, base64Picture }: Props) {
           theme="circle"
           onPress={selectImageFromGallery}
         />
+        {hasDefaultBase64Picture === false && (
+          <CustomButton
+            style={{ backgroundColor: "rgb(184, 33, 33)" }}
+            iconName="delete-forever"
+            theme="circle"
+            onPress={setDefaulBase64Picture}
+          />
+        )}
       </View>
     </View>
   );
