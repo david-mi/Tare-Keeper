@@ -35,10 +35,12 @@ export function FoodContainers({ foodContainers }: Props) {
 
   const onContentSizeChange = () => {
     const foodContainersLength = foodContainers.length;
+
     if (foodContainersLength > foodContainersAmountRef.current) {
       animatedFlatListRef.current.scrollToEnd();
-      foodContainersAmountRef.current++;
     }
+
+    foodContainersAmountRef.current = foodContainers.length;
   };
 
   if (selectedFoodContainer) {
