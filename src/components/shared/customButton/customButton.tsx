@@ -3,6 +3,7 @@ import { Pressable, Text, type StyleProp, type TextStyle, type ViewStyle } from 
 
 import { styles } from "./customButton.styles";
 import SimpleLineIcons from "@expo/vector-icons/SimpleLineIcons";
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 type PressablePropsWithRef = ComponentPropsWithRef<typeof Pressable>;
 
@@ -14,7 +15,7 @@ interface RectangleButtonProps extends PressablePropsWithRef {
 
 interface RoundButtonProps extends PressablePropsWithRef {
   theme: "circle";
-  iconName: keyof typeof SimpleLineIcons.glyphMap;
+  iconName: keyof typeof SimpleLineIcons.glyphMap | keyof typeof MaterialIcons.glyphMap;
 }
 
 type CustomButtonProps = RectangleButtonProps | RoundButtonProps;
@@ -41,7 +42,10 @@ export const CustomButton = forwardRef(({ style, disabled, ...props }: CustomBut
           disabled={disabled}
           style={[styles.roundButton, styleProps]}
         >
-          <SimpleLineIcons name={props.iconName} size={20} color="white" />
+          {props.iconName in SimpleLineIcons.glyphMap
+            ? <SimpleLineIcons name={props.iconName as keyof typeof SimpleLineIcons.glyphMap} size={20} color="white" />
+            : <MaterialIcons name={props.iconName as keyof typeof MaterialIcons.glyphMap} size={20} color="white" />
+          }
         </Pressable>
       );
     }
