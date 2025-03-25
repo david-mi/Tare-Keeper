@@ -1,14 +1,14 @@
-import { ScrollView, TextInput } from "react-native";
+import { TextInput } from "react-native";
 import { styles } from "./foodContainerCreationModal.styles";
 import { useRef, useState } from "react";
 import { FoodContainerType } from "@/src/types";
 import { CustomButton } from "@/src/components/shared/customButton/customButton";
 import { clientStore } from "@/src/services/clientStore/clientStore";
-import { CustomModal } from "@/src/components/shared/customModal/customModal";
 import { randomUUID } from "expo-crypto";
 import { CustomTextInputWithLabel } from "@/src/components/shared/customTextInputWithLabel/customTextInputWithLabel";
 import { FoodContainerPicture } from "./foodContainerPicture/foodContainerPicture";
 import { defaultBase64Picture } from "./foodContainerPicture/defaultBase64Picture";
+import { FoodContainerModalWrapper } from "../../shared/foodContainerModalWrapper/foodContainerModalWrapper";
 
 interface Props {
   closeModal: () => void;
@@ -66,44 +66,38 @@ export function FoodContainerCreationModal({ closeModal }: Props) {
   }
 
   return (
-    <CustomModal
-      closeModalCallback={closeModal}
+    <FoodContainerModalWrapper
+      closeModal={closeModal}
       inputToFocusRef={nameInputElementRef}
       title="Ajout d'un récipient"
     >
-      <ScrollView
-        style={{ flex: 1 }} contentContainerStyle={styles.container}
-        keyboardDismissMode="interactive"
-        keyboardShouldPersistTaps="always"
-      >
-        <FoodContainerPicture
-          base64Picture={foodContainer.base64Picture}
-          setPicture={setFoodContainerPicture}
-        />
-        <CustomTextInputWithLabel
-          label="Nom"
-          labelDescription="20 caractères max."
-          ref={nameInputElementRef}
-          onChangeText={setFoodContainerName}
-          value={foodContainer.name}
-          maxLength={20}
-        />
-        <CustomTextInputWithLabel
-          label="Poids"
-          labelDescription="g"
-          onChangeText={setFoodContainerWeight}
-          keyboardType={"numeric"}
-          value={String(foodContainer.weightInGrams)}
-          maxLength={5}
-        />
-        <CustomButton
-          disabled={validateInputs() === false}
-          theme="rectangle"
-          title={"Valider"}
-          onPress={submitFoodContainer}
-          style={styles.addFoodContainerButton}
-        />
-      </ScrollView>
-    </CustomModal>
+      <FoodContainerPicture
+        base64Picture={foodContainer.base64Picture}
+        setPicture={setFoodContainerPicture}
+      />
+      <CustomTextInputWithLabel
+        label="Nom"
+        labelDescription="20 caractères max."
+        ref={nameInputElementRef}
+        onChangeText={setFoodContainerName}
+        value={foodContainer.name}
+        maxLength={20}
+      />
+      <CustomTextInputWithLabel
+        label="Poids"
+        labelDescription="g"
+        onChangeText={setFoodContainerWeight}
+        keyboardType={"numeric"}
+        value={String(foodContainer.weightInGrams)}
+        maxLength={5}
+      />
+      <CustomButton
+        disabled={validateInputs() === false}
+        theme="rectangle"
+        title={"Valider"}
+        onPress={submitFoodContainer}
+        style={styles.addFoodContainerButton}
+      />
+    </FoodContainerModalWrapper>
   );
 }
