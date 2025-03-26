@@ -9,7 +9,9 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "test": "jest --watchAll",
-    "lint": "expo lint"
+    "lint": "expo lint",
+    "build-android-local-dev": "eas build --profile development --platform android --local --output \"../builds/dev-build-$(date +%d-%m-%Y-%Hh%M).apk\"",
+    "build-android-local-prev": "eas build --profile preview --platform android --local --output \"../builds/prev-build-$(date +%d-%m-%Y-%Hh%M).apk\""
   },
   "jest": {
     "preset": "jest-expo"
