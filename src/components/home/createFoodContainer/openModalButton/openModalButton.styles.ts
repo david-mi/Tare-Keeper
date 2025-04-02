@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 
-const BUTTON_ICON_FONT_SIZE = 40;
-const BUTTON_SIZE = 70;
+const BUTTON_ICON_FONT_SIZE = 30;
+const BUTTON_SIZE = 60;
 
 export const styles = StyleSheet.create({
   background: {

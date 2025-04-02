@@ -43,8 +43,8 @@ export const CustomButton = forwardRef(({ style, disabled, ...props }: CustomBut
           style={[styles.roundButton, styleProps]}
         >
           {props.iconName in SimpleLineIcons.glyphMap
-            ? <SimpleLineIcons name={props.iconName as keyof typeof SimpleLineIcons.glyphMap} size={20} color="white" />
-            : <MaterialIcons name={props.iconName as keyof typeof MaterialIcons.glyphMap} size={20} color="white" />
+            ? <SimpleLineIcons name={props.iconName as keyof typeof SimpleLineIcons.glyphMap} style={styles.roundButtonIcon} color="white" />
+            : <MaterialIcons name={props.iconName as keyof typeof MaterialIcons.glyphMap} style={styles.roundButtonIcon} color="white" />
           }
         </Pressable>
       );

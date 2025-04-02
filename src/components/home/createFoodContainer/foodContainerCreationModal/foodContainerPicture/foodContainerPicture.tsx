@@ -48,6 +48,7 @@ export function FoodContainerPicture({ setPicture, base64Picture }: Props) {
 
   return (
     <View style={styles.addImageContainer}>
+      <View style={styles.placeHolder} />
       <View style={styles.imageContainer}>
         <Image
           source={{ uri: base64Picture }}

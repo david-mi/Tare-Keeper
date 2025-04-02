@@ -11,12 +11,12 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     minHeight: CLOSE_BUTTON_SIZE,
-    marginTop: 20,
-    marginBottom: 10,
+    marginTop: 15,
+    marginBottom: 5,
     marginHorizontal: 5,
   },
   title: {
-    fontSize: 22,
+    fontSize: 20,
     fontWeight: 600,
   },
   closeButton: {
@@ -26,6 +26,6 @@ export const styles = StyleSheet.create({
   },
   closeButtonIcon: {
     fontSize: CLOSE_BUTTON_SIZE,
-    color: "black"
+    color: "black",
   }
 });

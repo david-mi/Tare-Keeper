@@ -2,13 +2,21 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   addImageContainer: {
+    flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "rgb(244, 242, 242)",
-    paddingVertical: 5
+    paddingVertical: 5,
+    alignSelf: "center",
+    gap: 10
+  },
+  placeHolder: {
+    width: 35
   },
   imageContainer: {
-    height: 150,
-    width: 150,
+    height: 200,
+    width: 200,
+    borderRadius: 20,
+    overflow: "hidden",
+    padding: 5
   },
   image: {
     width: "100%",
@@ -17,7 +25,6 @@ export const styles = StyleSheet.create({
   pictureButtonsContainer: {
     marginTop: 5,
     justifyContent: "center",
-    flexDirection: "row",
     gap: 10,
   },
 });

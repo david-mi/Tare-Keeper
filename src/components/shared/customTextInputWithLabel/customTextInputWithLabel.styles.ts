@@ -9,10 +9,9 @@ export const styles = StyleSheet.create({
     flexGrow: 1,
     borderWidth: 1,
     borderColor: "rgba(160, 160, 160, 0.43)",
-    height: 60,
+    height: 50,
     paddingHorizontal: 10,
-    fontSize: 25,
-    fontWeight: 600,
+    fontSize: 15,
     backgroundColor: "rgb(244, 242, 242)",
   },
   labelContainer: {
@@ -21,7 +20,7 @@ export const styles = StyleSheet.create({
     gap: 5
   },
   label: {
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: "600",
   },
   labelDescription: {

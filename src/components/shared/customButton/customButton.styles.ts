@@ -4,7 +4,7 @@ export const styles = StyleSheet.create({
   rectangleButton: {
     backgroundColor: "rgb(138, 35, 35)",
     paddingHorizontal: 20,
-    height: 70,
+    height: 60,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 10,
@@ -12,14 +12,17 @@ export const styles = StyleSheet.create({
   roundButton: {
     alignItems: "center",
     justifyContent: "center",
-    height: 40,
-    width: 40,
+    height: 35,
+    width: 35,
     borderRadius: 50,
     backgroundColor: "black",
   },
+  roundButtonIcon: {
+    fontSize: 15
+  },
   title: {
     color: "white",
-    fontSize: 22,
+    fontSize: 20,
     fontWeight: 600
   },
   disabled: {
