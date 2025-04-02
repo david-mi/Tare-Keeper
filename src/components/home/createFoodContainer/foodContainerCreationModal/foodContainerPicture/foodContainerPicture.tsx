@@ -27,6 +27,21 @@ export function FoodContainerPicture({ setPicture, base64Picture }: Props) {
     }
   }
 
+  async function openCamera() {
+    const { canceled, assets } = await ImagePicker.launchCameraAsync({
+      mediaTypes: "images",
+      allowsEditing: true,
+      aspect: [1, 1],
+      quality: 1,
+      base64: true,
+    });
+
+    if (canceled === false) {
+      const { base64 } = assets[0];
+      setPicture(base64 as string);
+    }
+  }
+
   function setDefaulBase64Picture() {
     setPicture(defaultBase64Picture.replace("data:image/png;base64,", ""));
   }
@@ -45,6 +60,12 @@ export function FoodContainerPicture({ setPicture, base64Picture }: Props) {
           iconName="picture"
           theme="circle"
           onPress={selectImageFromGallery}
+        />
+        <CustomButton
+          style={{ backgroundColor: "rgb(0, 0, 0)" }}
+          iconName="camera"
+          theme="circle"
+          onPress={openCamera}
         />
         {hasDefaultBase64Picture === false && (
           <CustomButton
