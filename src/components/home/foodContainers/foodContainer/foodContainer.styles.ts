@@ -1,8 +1,9 @@
+import { STYLES } from "@/src/constants/styles";
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   wrapper: {
-    shadowColor: "#000",
+    shadowColor: STYLES.COLORS.SHADOW,
     shadowOffset: {
       width: 0,
       height: 2,
@@ -10,11 +11,11 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
-    backgroundColor: "white",
+    backgroundColor: STYLES.COLORS.BACKGROUND,
     borderRadius: 15,
   },
   foodContainer: {
-    backgroundColor: "white",
+    backgroundColor: STYLES.COLORS.BACKGROUND,
     flexDirection: "row",
     overflow: "hidden",
     paddingVertical: 10,
@@ -22,16 +23,15 @@ export const styles = StyleSheet.create({
   },
   infos: {
     flex: 1,
-    color: "red"
   },
   name: {
     fontSize: 20,
     fontWeight: 600,
-    color: "black"
+    color: STYLES.COLORS.TEXT_BLACK,
   },
   weight: {
     fontStyle: "italic",
-    color: "black"
+    color: STYLES.COLORS.TEXT_BLACK,
   },
   pictureContainer: {
     borderRadius: 15,

@@ -1,8 +1,9 @@
+import { STYLES } from "@/src/constants/styles";
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   rectangleButton: {
-    backgroundColor: "rgb(138, 35, 35)",
+    backgroundColor: STYLES.COLORS.PRIMARY,
     paddingHorizontal: 20,
     height: 60,
     alignItems: "center",
@@ -15,13 +16,13 @@ export const styles = StyleSheet.create({
     height: 35,
     width: 35,
     borderRadius: 50,
-    backgroundColor: "black",
+    backgroundColor: STYLES.COLORS.SECONDARY,
   },
   roundButtonIcon: {
     fontSize: 15
   },
   title: {
-    color: "white",
+    color: STYLES.COLORS.TEXT_WHITE,
     fontSize: 20,
     fontWeight: 600
   },

@@ -1,3 +1,4 @@
+import { STYLES } from "@/src/constants/styles";
 import { StyleSheet } from "react-native";
 
 const BUTTON_ICON_FONT_SIZE = 30;
@@ -7,21 +8,21 @@ export const styles = StyleSheet.create({
   background: {
     position: "absolute",
     bottom: 0,
-    backgroundColor: "rgba(255, 255, 255, 0.81)",
+    backgroundColor: STYLES.COLORS.BACKGROUND_OPACITY,
     height: BUTTON_SIZE,
     width: "100%",
   },
   button: {
     position: "absolute",
     bottom: BUTTON_SIZE / 3,
-    backgroundColor: "#00853E",
+    backgroundColor: STYLES.COLORS.PRIMARY,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 10,
     alignSelf: "center",
     height: BUTTON_SIZE,
     width: BUTTON_SIZE,
-    shadowColor: "#000",
+    shadowColor: STYLES.COLORS.SHADOW,
     shadowOffset: {
       width: 0,
       height: 2,
@@ -31,7 +32,7 @@ export const styles = StyleSheet.create({
     elevation: 5,
   },
   icon: {
-    color: "white",
+    color: STYLES.COLORS.ICON,
     fontSize: BUTTON_ICON_FONT_SIZE,
   }
 });

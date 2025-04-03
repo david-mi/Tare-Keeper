@@ -1,3 +1,4 @@
+import { STYLES } from "@/src/constants/styles";
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
@@ -26,5 +27,11 @@ export const styles = StyleSheet.create({
     marginTop: 5,
     justifyContent: "center",
     gap: 10,
+  },
+  selectImageFromGalleryButton: {
+    backgroundColor: STYLES.COLORS.PRIMARY,
+  },
+  openCameraButton: {
+    backgroundColor: STYLES.COLORS.SECONDARY,
   },
 });

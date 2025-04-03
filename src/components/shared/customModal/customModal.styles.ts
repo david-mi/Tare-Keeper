@@ -1,3 +1,4 @@
+import { STYLES } from "@/src/constants/styles";
 import { StyleSheet } from "react-native";
 
 const CLOSE_BUTTON_SIZE = 40;
@@ -26,6 +27,6 @@ export const styles = StyleSheet.create({
   },
   closeButtonIcon: {
     fontSize: CLOSE_BUTTON_SIZE,
-    color: "black",
+    color: STYLES.COLORS.SECONDARY,
   }
 });

@@ -1,3 +1,4 @@
+import { STYLES } from "@/src/constants/styles";
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
@@ -8,11 +9,11 @@ export const styles = StyleSheet.create({
   input: {
     flexGrow: 1,
     borderWidth: 1,
-    borderColor: "rgba(160, 160, 160, 0.43)",
+    borderColor: STYLES.COLORS.INPUT_BORDER,
     height: 50,
     paddingHorizontal: 10,
     fontSize: 15,
-    backgroundColor: "rgb(244, 242, 242)",
+    backgroundColor: STYLES.COLORS.INPUT_BACKGROUND,
   },
   labelContainer: {
     flexDirection: "row",

@@ -1,0 +1,16 @@
+export const COLORS = {
+  BACKGROUND: "rgb(255, 255, 255)",
+  BACKGROUND_OPACITY: "rgba(255, 255, 255, 0.81)",
+  PRIMARY: "rgb(0, 133, 62)",
+  SECONDARY: "rgb(0, 0, 0)",
+  TEXT_WHITE: "rgb(255, 255, 255)",
+  TEXT_BLACK: "rgb(0, 0, 0)",
+  DELETE: "rgb(255, 0, 0)",
+  DELETE_LIGHT: "rgb(255, 200, 200)",
+  EDIT: "rgb(255, 165, 0)",
+  EDIT_LIGHT: "rgb(250, 240, 226)",
+  SHADOW: "rgb(0, 0, 0)",
+  ICON: "rgb(255, 255, 255)",
+  INPUT_BACKGROUND: "rgb(244, 242, 242)",
+  INPUT_BORDER: "rgba(160, 160, 160, 0.43)",
+} as const;

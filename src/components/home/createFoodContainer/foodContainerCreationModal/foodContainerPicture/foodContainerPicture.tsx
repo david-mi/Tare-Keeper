@@ -57,13 +57,13 @@ export function FoodContainerPicture({ setPicture, base64Picture }: Props) {
       </View>
       <View style={styles.pictureButtonsContainer}>
         <CustomButton
-          style={{ backgroundColor: "#00853E" }}
+          style={styles.selectImageFromGalleryButton}
           iconName="picture"
           theme="circle"
           onPress={selectImageFromGallery}
         />
         <CustomButton
-          style={{ backgroundColor: "rgb(0, 0, 0)" }}
+          style={styles.openCameraButton}
           iconName="camera"
           theme="circle"
           onPress={openCamera}
