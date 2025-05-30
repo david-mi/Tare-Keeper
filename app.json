@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "tare-keeper",
+    "name": "Tare Keeper",
     "slug": "tare-keeper",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -12,7 +12,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./assets/images/adaptive-icon_3.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.davidmi.tarekeeper"
