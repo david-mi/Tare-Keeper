@@ -36,7 +36,7 @@ export function WeightCalculationModal({ closeModal, ...foodContainer }: Props) 
     >
       <View style={styles.foodContainer}>
         <View style={styles.pictureContainer}>
-          <Image source={{ uri: foodContainer.base64Picture, width: 120, height: 120 }} />
+          <Image source={{ uri: foodContainer.base64Picture }} style={styles.picture} />
         </View>
         <CustomTextInputWithLabel
           label="Poids total"

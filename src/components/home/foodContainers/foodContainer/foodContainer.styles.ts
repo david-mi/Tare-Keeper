@@ -36,5 +36,9 @@ export const styles = StyleSheet.create({
   pictureContainer: {
     borderRadius: 15,
     overflow: "hidden"
-  }
+  },
+  picture: {
+    width: STYLES.SIZES.CONTAINER_PICTURE_SMALL,
+    height: STYLES.SIZES.CONTAINER_PICTURE_SMALL,
+  },
 });

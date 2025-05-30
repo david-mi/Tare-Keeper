@@ -13,8 +13,8 @@ export const styles = StyleSheet.create({
     width: 35
   },
   imageContainer: {
-    height: 200,
-    width: 200,
+    height: STYLES.SIZES.CONTAINER_PICTURE_MEDIUM,
+    width: STYLES.SIZES.CONTAINER_PICTURE_MEDIUM,
     borderRadius: 20,
     overflow: "hidden",
     padding: 5

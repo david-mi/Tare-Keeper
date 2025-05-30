@@ -89,7 +89,7 @@ export function FoodContainer({ onPress, ...foodContainer }: Props) {
           <Text style={styles.weight}>{formatWeight(foodContainer.weightInGrams)}</Text>
         </View>
         <View style={styles.pictureContainer}>
-          <Image source={{ uri: foodContainer.base64Picture, width: 80, height: 80 }} />
+          <Image source={{ uri: foodContainer.base64Picture }} style={styles.picture} />
         </View>
       </ReanimatedSwipeable>
     </Pressable>

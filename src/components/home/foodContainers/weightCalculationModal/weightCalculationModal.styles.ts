@@ -16,6 +16,10 @@ export const styles = StyleSheet.create({
     borderRadius: 15,
     overflow: "hidden"
   },
+  picture: {
+    width: STYLES.SIZES.CONTAINER_PICTURE_MEDIUM,
+    height: STYLES.SIZES.CONTAINER_PICTURE_MEDIUM,
+  },
   resultContainer: {
     width: "100%",
     gap: 5,
