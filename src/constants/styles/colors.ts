@@ -5,6 +5,7 @@ export const COLORS = {
   SECONDARY: "rgb(0, 0, 0)",
   TEXT_WHITE: "rgb(255, 255, 255)",
   TEXT_BLACK: "rgb(0, 0, 0)",
+  TEXT_EMPTY: "rgb(136, 136, 136)",
   DELETE: "rgb(255, 0, 0)",
   DELETE_LIGHT: "rgb(255, 200, 200)",
   EDIT: "rgb(255, 165, 0)",

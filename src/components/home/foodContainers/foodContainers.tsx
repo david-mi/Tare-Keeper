@@ -1,5 +1,5 @@
 import { FoodContainerType } from "@/src/types";
-import { ListRenderItem } from "react-native";
+import { ListRenderItem, Text, View } from "react-native";
 import { styles } from "./foodContainers.styles";
 import { FoodContainer } from "./foodContainer/foodContainer";
 import { WeightCalculationModal } from "./weightCalculationModal/weightCalculationModal";
@@ -52,14 +52,16 @@ export function FoodContainers({ foodContainers }: Props) {
     );
   }
 
-  return (
-    <Animated.FlatList
-      ref={animatedFlatListRef}
-      contentContainerStyle={styles.foodContainers}
-      data={foodContainers}
-      renderItem={renderItem}
-      itemLayoutAnimation={LinearTransition}
-      onContentSizeChange={onContentSizeChange}
-    />
-  );
+  return foodContainers.length > 0
+    ? (
+      <Animated.FlatList
+        ref={animatedFlatListRef}
+        contentContainerStyle={styles.foodContainers}
+        data={foodContainers}
+        renderItem={renderItem}
+        itemLayoutAnimation={LinearTransition}
+        onContentSizeChange={onContentSizeChange}
+      />
+    )
+    : <Text style={styles.empty}>Aucun récipient enregistré.</Text>;
 }
