@@ -14,4 +14,7 @@ export const COLORS = {
   ICON: "rgb(255, 255, 255)",
   INPUT_BACKGROUND: "rgb(244, 242, 242)",
   INPUT_BORDER: "rgba(160, 160, 160, 0.43)",
+  SETTINGS: {
+    SEPARATOR: "rgba(0, 0, 0, 0.1)",
+  }
 } as const;
