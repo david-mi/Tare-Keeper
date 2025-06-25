@@ -15,6 +15,11 @@ const routeLinks: RouteLink[] = [
     key: "926ff737-31d2-492b-a336-f9ac4b948c22",
     route: "/settings/exportContainers"
   },
+  {
+    title: "Partager les récipients",
+    key: "a3b4c5d6-7e8f-90a1-b2c3d4e5f6g7",
+    route: "/settings/shareContainers"
+  }
 ];
 
 export function Settings() {
