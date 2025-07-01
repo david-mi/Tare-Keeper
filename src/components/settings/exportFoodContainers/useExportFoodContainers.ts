@@ -3,11 +3,13 @@ import * as Sharing from "expo-sharing";
 import * as FileSystem from "expo-file-system";
 import { useCallback } from "react";
 import { clientStore } from "@/src/services/clientStore/clientStore";
+import { useRouter } from "expo-router";
 
-export function useShareFoodContainers() {
+export function useExportFoodContainers() {
   const foodContainers = clientStore((state) => state.foodContainers);
+  const router = useRouter();
 
-  const shareFoodContainers = useCallback(async () => {
+  const exportFoodContainers = useCallback(async () => {
     const foodContainersToJsonString = JSON.stringify(foodContainers, null, 2);
     const foodContainersUri = FileSystem.documentDirectory + "foodContainers.json";
 
@@ -21,15 +23,15 @@ export function useShareFoodContainers() {
       await Sharing.shareAsync(
         foodContainersUri,
         {
-          dialogTitle: "Partager mes récipients"
+          dialogTitle: "Exporter mes récipients"
         });
+
     } catch (error) {
       Alert.alert("Une erreur est survenue");
     }
-
   }, [foodContainers]);
 
   return {
-    share: shareFoodContainers
+    exportFoodContainers
   };
 }

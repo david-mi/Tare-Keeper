@@ -16,9 +16,9 @@ const routeLinks: RouteLink[] = [
     route: "/settings/importContainers"
   },
   {
-    title: "Partager les récipients",
+    title: "Exporter les récipients",
     key: "a3b4c5d6-7e8f-90a1-b2c3d4e5f6g7",
-    route: "/settings/shareContainers"
+    route: "/settings/exportFoodContainers"
   }
 ];
 

@@ -5,7 +5,7 @@ export default function SettingsLayout() {
     <Stack>
       <Stack.Screen name="index" options={{ title: "Paramètres" }} />
       <Stack.Screen name="importContainers" options={{ title: "Importer les récipients" }} />
-      <Stack.Screen name="shareContainers" options={{ title: "Partager les récipients" }} />
+      <Stack.Screen name="exportFoodContainers" options={{ title: "Exporter les récipients" }} />
     </Stack>
   );
 }
