@@ -1,5 +1,5 @@
-import { ShareContainers } from "@/src/components/settings/shareContainers/shareContainers";
+import { ShareFoodContainers } from "@/src/components/settings/shareFoodContainers/shareFoodContainers";
 
-export default function ShareContainersPage() {
-  return <ShareContainers />;
+export default function ShareFoodContainersPage() {
+  return <ShareFoodContainers />;
 }
