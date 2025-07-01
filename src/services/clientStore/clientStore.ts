@@ -6,6 +6,7 @@ import { appStorage } from "./storage";
 
 interface StoreType {
   foodContainers: FoodContainerType[];
+  setFoodContainers: (foodContainers: FoodContainerType[]) => void;
   addFoodContainer: (foodContainer: FoodContainerType) => void;
   editFoodContainer: (foodContainer: FoodContainerType) => void;
   deleteFoodContainer: (id: string) => void;
@@ -15,6 +16,9 @@ export const clientStore = create<StoreType>()(
   persist(
     (set, get) => ({
       foodContainers: foodContainersMock,
+      setFoodContainers: (foodContainers) => set({
+        foodContainers: foodContainers
+      }),
       addFoodContainer: (foodContainer) => set({
         foodContainers: [
           ...get().foodContainers,

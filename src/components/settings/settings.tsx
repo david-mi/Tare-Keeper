@@ -11,9 +11,9 @@ interface RouteLink {
 
 const routeLinks: RouteLink[] = [
   {
-    title: "Exporter les récipients",
-    key: "926ff737-31d2-492b-a336-f9ac4b948c22",
-    route: "/settings/exportContainers"
+    title: "Importer les récipients",
+    key: "b1c3f4d2-5e6a-4f8b-9c1e-7d8f9a0b1c2d",
+    route: "/settings/importContainers"
   },
   {
     title: "Partager les récipients",
