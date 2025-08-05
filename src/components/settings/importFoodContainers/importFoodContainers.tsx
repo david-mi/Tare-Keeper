@@ -35,7 +35,7 @@ async function importFoodContainersFromFile(setFoodsContainers: (foodContainers:
   }
 }
 
-export function ImportContainers() {
+export function ImportFoodContainers() {
   const setFoodContainers = clientStore(state => state.setFoodContainers);
   const router = useRouter();
 

@@ -13,7 +13,7 @@ const routeLinks: RouteLink[] = [
   {
     title: "Importer les récipients",
     key: "b1c3f4d2-5e6a-4f8b-9c1e-7d8f9a0b1c2d",
-    route: "/settings/importContainers"
+    route: "/settings/importFoodContainers"
   },
   {
     title: "Exporter les récipients",
