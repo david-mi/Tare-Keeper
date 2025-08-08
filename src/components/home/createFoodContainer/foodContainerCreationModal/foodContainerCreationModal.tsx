@@ -38,7 +38,7 @@ export function FoodContainerCreationModal({ closeModal }: Props) {
   function setFoodContainerWeight(weight: string) {
     setFoodContainer((foodContainer) => ({
       ...foodContainer,
-      weightInGrams: weight.replace(/[^0-9.]/, "")
+      weightInGrams: weight.replace(/[^0-9]/, "")
     }));
   }
 

@@ -35,7 +35,7 @@ export function FoodContainerEditionModal({ foodContainer: foodContainerToEdit, 
   function setEditedFoodContainerWeight(weight: string) {
     setEditedFoodContainer((foodContainer) => ({
       ...foodContainer,
-      weightInGrams: weight.replace(/[^0-9.]/, "")
+      weightInGrams: weight.replace(/[^0-9]/, "")
     }));
   }
 

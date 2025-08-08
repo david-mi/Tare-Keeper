@@ -17,7 +17,7 @@ export function WeightCalculationModal({ closeModal, ...foodContainer }: Props) 
 
   const [inputValue, setInputValue] = useState("");
   function handleInput(text: string) {
-    setInputValue(text.replace(/[^0-9.]/, ""));
+    setInputValue(text.replace(/[^0-9]/, ""));
   }
 
   function calculateWeight(inputValue: string) {
